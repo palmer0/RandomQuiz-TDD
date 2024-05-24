@@ -13,7 +13,6 @@ import es.ulpgc.eite.da.randomquiz.R;
 public class CheatActivity
     extends AppCompatActivity implements CheatContract.View {
 
-  //public static String TAG = CheatActivity.class.getSimpleName();
   public static String TAG = "RandomQuiz.CheatActivity";
 
   CheatContract.Presenter presenter;
@@ -35,18 +34,14 @@ public class CheatActivity
     yesButton.setOnClickListener(v -> presenter.yesButtonClicked());
     noButton.setOnClickListener(v -> presenter.noButtonClicked());
 
-    yesButton.setText(getYesLabel());
-    noButton.setText(getNoLabel());
-    confirmationText.setText(getConfirmationLabel());
+    yesButton.setText(getYesButtonLabel());
+    noButton.setText(getNoButtonLabel());
+    confirmationText.setText(getConfirmationButtonLabel());
 
     // do the setup
     CheatScreen.configure(this);
 
-    /*
     // do some work
-    presenter.onCreateCalled();
-    */
-
     if(savedInstanceState == null){
       presenter.onCreateCalled();
 
@@ -89,30 +84,18 @@ public class CheatActivity
     finish();
   }
 
-  private String getYesLabel() {
+  private String getYesButtonLabel() {
     return getResources().getString(R.string.yes_label);
   }
 
-  private String getNoLabel() {
+  private String getNoButtonLabel() {
     return getResources().getString(R.string.no_label);
   }
 
-  private String getConfirmationLabel() {
+  private String getConfirmationButtonLabel() {
     return getResources().getString(R.string.confirmation_text);
   }
 
-  /*
-  @Override
-  public String getFalseLabel() {
-    return getResources().getString(R.string.false_label);
-  }
-
-
-  @Override
-  public String getTrueLabel() {
-    return getResources().getString(R.string.true_label);
-  }
-  */
 
   @Override
   public void injectPresenter(CheatContract.Presenter presenter) {

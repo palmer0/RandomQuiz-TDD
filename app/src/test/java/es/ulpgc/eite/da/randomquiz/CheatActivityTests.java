@@ -84,20 +84,6 @@ public class CheatActivityTests {
     @Test
     public void test01ActivityInitialization() {
 
-        /*
-        int[] answersArray = ApplicationProvider
-            .getApplicationContext()
-            .getResources().getIntArray(R.array.answers_array);
-
-        Intent intent = new Intent(
-            ApplicationProvider.getApplicationContext(),
-            CheatActivity.class
-        );
-        intent.putExtra(CheatActivity.EXTRA_ANSWER, answersArray[0]);
-
-        ActivityScenario<CheatActivity> scenario = ActivityScenario.launch(intent);
-        */
-
         ActivityScenario<CheatActivity> scenario =
                 ActivityScenario.launch(CheatActivity.class);
 
@@ -132,20 +118,6 @@ public class CheatActivityTests {
     @Test
     public void test02ShowAnswerTrue() {
 
-        /*
-        int[] answersArray = ApplicationProvider
-            .getApplicationContext()
-            .getResources().getIntArray(R.array.answers_array);
-
-        Intent intent = new Intent(
-            ApplicationProvider.getApplicationContext(),
-            CheatActivity.class
-        );
-        intent.putExtra(CheatActivity.EXTRA_ANSWER, answersArray[0]);
-
-        ActivityScenario<CheatActivity> scenario = ActivityScenario.launch(intent);
-        */
-
         ActivityScenario<CheatActivity> scenario =
                 ActivityScenario.launch(CheatActivity.class);
 
@@ -173,10 +145,6 @@ public class CheatActivityTests {
                 activity.getString(R.string.true_text)
             );
             assertTrue(expectedList.contains(answerTextView.getText().toString()));
-            /*assertEquals(
-                activity.getString(R.string.true_text),
-                answerTextView.getText().toString()
-            );*/
 
             // Verify the buttons are disabled
             assertFalse(yesButton.isEnabled());
@@ -186,23 +154,6 @@ public class CheatActivityTests {
 
     @Test
     public void test02ShowAnswerFalse() {
-
-        /*
-        int[] answersArray = ApplicationProvider
-            .getApplicationContext()
-            .getResources().getIntArray(R.array.answers_array);
-
-        Intent intent = new Intent(
-            ApplicationProvider.getApplicationContext(),
-            CheatActivity.class
-        );
-        intent.putExtra(CheatActivity.EXTRA_ANSWER, answersArray[1]);
-
-        ActivityScenario<CheatActivity> scenario = ActivityScenario.launch(intent);
-
-        ActivityScenario<CheatActivity> scenario =
-                ActivityScenario.launch(CheatActivity.class);
-        */
 
         ActivityScenario<CheatActivity> scenario =
                 ActivityScenario.launch(CheatActivity.class);
@@ -231,10 +182,6 @@ public class CheatActivityTests {
                 activity.getString(R.string.true_text)
             );
             assertTrue(expectedList.contains(answerTextView.getText().toString()));
-            /*assertEquals(
-                activity.getString(R.string.false_text),
-                answerTextView.getText().toString()
-            );*/
 
             // Verify the buttons are disabled
             assertFalse(yesButton.isEnabled());
@@ -244,20 +191,6 @@ public class CheatActivityTests {
 
     @Test
     public void test03RotateScreen() {
-
-        /*
-        int[] answersArray = ApplicationProvider
-            .getApplicationContext()
-            .getResources().getIntArray(R.array.answers_array);
-
-        Intent intent = new Intent(
-            ApplicationProvider.getApplicationContext(),
-            CheatActivity.class
-        );
-        intent.putExtra(CheatActivity.EXTRA_ANSWER, answersArray[0]);
-
-        ActivityScenario<CheatActivity> scenario = ActivityScenario.launch(intent);
-        */
 
         ActivityScenario<CheatActivity> scenario =
                 ActivityScenario.launch(CheatActivity.class);
@@ -289,10 +222,6 @@ public class CheatActivityTests {
                 activity.getString(R.string.true_text)
             );
             assertTrue(expectedList.contains(answerTextView.getText().toString()));
-            /*assertEquals(
-                activity.getString(R.string.true_text),
-                answerTextView.getText().toString()
-            );*/
 
             // Verify the buttons are disabled
             assertFalse(yesButton.isEnabled());
@@ -302,20 +231,6 @@ public class CheatActivityTests {
 
     @Test
     public void test04ReturnResultNo() {
-
-        /*
-        int[] answersArray = ApplicationProvider
-            .getApplicationContext()
-            .getResources().getIntArray(R.array.answers_array);
-
-        Intent intent = new Intent(
-            ApplicationProvider.getApplicationContext(),
-            CheatActivity.class
-        );
-        intent.putExtra(CheatActivity.EXTRA_ANSWER, answersArray[0]);
-
-        ActivityScenario<CheatActivity> scenario = ActivityScenario.launch(intent);
-        */
 
         ActivityScenario<CheatActivity> scenario =
                 ActivityScenario.launch(CheatActivity.class);
@@ -329,18 +244,6 @@ public class CheatActivityTests {
             // Press No button
             noButton.performClick();
 
-            /*
-            ShadowActivity shadowActivity = shadowOf(activity);
-            Intent resultIntent = shadowActivity.getResultIntent();
-            boolean answerCheated = resultIntent.getBooleanExtra(
-                CheatActivity.EXTRA_CHEATED, false
-            );
-
-            // QuestionActivity should be resumed with CheatActivity intent
-            assertEquals(RESULT_OK, shadowActivity.getResultCode());
-            assertFalse(answerCheated);
-            */
-
             CheatToQuestionState savedState =
                 AppMediator.getInstance().getCheatToQuestionState();
 
@@ -351,20 +254,6 @@ public class CheatActivityTests {
 
     @Test
     public void test05ReturnResultYes() {
-
-        /*
-        int[] answersArray = ApplicationProvider
-            .getApplicationContext()
-            .getResources().getIntArray(R.array.answers_array);
-
-        Intent intent = new Intent(
-            ApplicationProvider.getApplicationContext(),
-            CheatActivity.class
-        );
-        intent.putExtra(CheatActivity.EXTRA_ANSWER, answersArray[0]);
-
-        ActivityScenario<CheatActivity> scenario = ActivityScenario.launch(intent);
-        */
 
         QuestionToCheatState nextState = new QuestionToCheatState(quizAnswers[0]);
         AppMediator.getInstance().setQuestionToCheatState(nextState);
@@ -381,18 +270,6 @@ public class CheatActivityTests {
             // Go back to QuestionActivity
             activity.onBackPressed();
 
-            /*
-            ShadowActivity shadowActivity = shadowOf(activity);
-            Intent resultIntent = shadowActivity.getResultIntent();
-            boolean answerCheated = resultIntent.getBooleanExtra(
-                CheatActivity.EXTRA_CHEATED, false
-            );
-
-            // QuestionActivity should be resumed with CheatActivity intent
-            assertEquals(RESULT_OK, shadowActivity.getResultCode());
-            assertTrue(answerCheated);
-            */
-
             CheatToQuestionState savedState =
                     AppMediator.getInstance().getCheatToQuestionState();
 
@@ -404,20 +281,6 @@ public class CheatActivityTests {
     @Test
     public void test06BackPressed() {
 
-        /*
-        int[] answersArray = ApplicationProvider
-            .getApplicationContext()
-            .getResources().getIntArray(R.array.answers_array);
-
-        Intent intent = new Intent(
-            ApplicationProvider.getApplicationContext(),
-            CheatActivity.class
-        );
-        intent.putExtra(CheatActivity.EXTRA_ANSWER, answersArray[0]);
-
-        ActivityScenario<CheatActivity> scenario = ActivityScenario.launch(intent);
-        */
-
         QuestionToCheatState nextState = new QuestionToCheatState(quizAnswers[0]);
         AppMediator.getInstance().setQuestionToCheatState(nextState);
 
@@ -428,18 +291,6 @@ public class CheatActivityTests {
 
             // Go back to QuestionActivity
             activity.onBackPressed();
-
-            /*
-            ShadowActivity shadowActivity = shadowOf(activity);
-            Intent resultIntent = shadowActivity.getResultIntent();
-            boolean answerCheated = resultIntent.getBooleanExtra(
-                CheatActivity.EXTRA_CHEATED, false
-            );
-
-            // QuestionActivity should be resumed with CheatActivity intent
-            assertEquals(RESULT_OK, shadowActivity.getResultCode());
-            assertFalse(answerCheated);
-            */
 
             CheatToQuestionState savedState =
                 AppMediator.getInstance().getCheatToQuestionState();

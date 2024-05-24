@@ -7,29 +7,30 @@ public class CheatModel implements CheatContract.Model {
 
   public static String TAG = "RandomQuiz.CheatModel";
 
-  private String falseLabel, trueLabel;
+
+  private String falseAnswerText, trueAnswerText;
 
 
   public CheatModel() {
 
   }
 
-  public void setFalseLabel(String label) {
-    falseLabel = label;
+  public void setFalseAnswerText(String label) {
+    falseAnswerText = label;
   }
 
-  public void setTrueLabel(String label) {
-    trueLabel = label;
+  public void setTrueAnswerText(String label) {
+    trueAnswerText = label;
   }
 
   @Override
-  public String getFalseLabel() {
-    return falseLabel;
+  public String getFalseAnswerText() {
+    return falseAnswerText;
   }
 
 
   @Override
-  public String getTrueLabel() {
-    return trueLabel;
+  public String getTrueAnswerText() {
+    return trueAnswerText;
   }
 }

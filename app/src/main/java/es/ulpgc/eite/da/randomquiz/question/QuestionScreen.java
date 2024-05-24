@@ -20,8 +20,8 @@ public class QuestionScreen {
     QuestionContract.Presenter presenter = new QuestionPresenter(mediator);
 
     QuestionModel model = new QuestionModel();
-    model.setCorrectLabel(context.get().getString(R.string.correct_text));
-    model.setIncorrectLabel(context.get().getString(R.string.incorrect_text));
+    model.setCorrectResultText(context.get().getString(R.string.correct_text));
+    model.setIncorrectResultText(context.get().getString(R.string.incorrect_text));
 
     presenter.injectView(new WeakReference<>(view));
     presenter.injectModel(model);

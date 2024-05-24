@@ -10,8 +10,6 @@ public interface CheatContract {
 
     void displayCheatData(CheatViewModel viewModel);
     void finishView();
-    //String getFalseLabel();
-    //String getTrueLabel();
   }
 
   interface Presenter {
@@ -29,7 +27,7 @@ public interface CheatContract {
 
   interface Model {
 
-    String getFalseLabel();
-    String getTrueLabel();
+    String getFalseAnswerText();
+    String getTrueAnswerText();
   }
 }

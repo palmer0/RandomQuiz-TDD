@@ -393,43 +393,9 @@ public class QuestionActivityTests {
     }
 
 
-//    @Test
-//    public void test07QuizCompletion() {
-//        ActivityScenario<QuestionActivity> scenario =
-//            ActivityScenario.launch(QuestionActivity.class);
-//
-//        scenario.onActivity(activity -> {
-//            TextView resultTextView = activity.findViewById(R.id.resultText);
-//            TextView questionTextView = activity.findViewById(R.id.questionText);
-//            Button trueButton = activity.findViewById(R.id.trueButton);
-//            Button falseButton = activity.findViewById(R.id.falseButton);
-//            Button cheatButton = activity.findViewById(R.id.cheatButton);
-//            Button nextButton = activity.findViewById(R.id.nextButton);
-//
-//            for (int i = 1; i <= quizQuestions.length; i++) {
-//                trueButton.performClick(); // Answer the question
-//                nextButton.performClick(); // Move to the next question
-//            }
-//
-//            // Verify the first question is shown
-//            assertEquals(quizQuestions[0], questionTextView.getText().toString());
-//
-//            // Verify the empty result is shown
-//            assertEquals(
-//                activity.getString(R.string.empty_text),
-//                resultTextView.getText().toString()
-//            );
-//
-//            // Verify the Next button is disabled
-//            assertFalse(nextButton.isEnabled());
-//            assertTrue(trueButton.isEnabled());
-//            assertTrue(falseButton.isEnabled());
-//            assertTrue(cheatButton.isEnabled());
-//        });
-//    }
 
     @Test
-    public void test08NavigationToCheatActivity() {
+    public void test07NavigationToCheatActivity() {
         ActivityScenario<QuestionActivity> scenario =
             ActivityScenario.launch(QuestionActivity.class);
 
@@ -443,18 +409,6 @@ public class QuestionActivityTests {
             // Press Cheat button
             cheatButton.performClick();
 
-            /*
-            Intent expectedIntent = new Intent(activity, CheatActivity.class);
-            Intent actualIntent = shadowOf(activity).getNextStartedActivity();
-
-            // CheatActivity should start with QuestionActivity intent
-            assertEquals(expectedIntent.getComponent(), actualIntent.getComponent());
-            assertEquals(
-                quizAnswers[0],
-                actualIntent.getIntExtra(CheatActivity.EXTRA_ANSWER, 0)
-            );
-            */
-
             QuestionToCheatState nextState =
                     AppMediator.getInstance().getQuestionToCheatState();
 
@@ -465,7 +419,7 @@ public class QuestionActivityTests {
 
 
     @Test
-    public void test09ResumeActivityWithCurrentQuestion() {
+    public void test08ResumeActivityWithCurrentQuestion() {
         ActivityScenario<QuestionActivity> scenario =
             ActivityScenario.launch(QuestionActivity.class);
 
@@ -476,17 +430,6 @@ public class QuestionActivityTests {
             Button falseButton = activity.findViewById(R.id.falseButton);
             Button cheatButton = activity.findViewById(R.id.cheatButton);
             Button nextButton = activity.findViewById(R.id.nextButton);
-
-
-            /*
-            // Return result No from CheatActivity
-            Intent resultData = new Intent();
-            resultData.putExtra(CheatActivity.EXTRA_CHEATED, false);
-
-            // Resume QuestionActivity calling onActivityResult
-            activity.onActivityResult(QuestionActivity.CHEAT_REQUEST, RESULT_OK, resultData);
-
-            */
 
             CheatToQuestionState savedState =
                     AppMediator.getInstance().getCheatToQuestionState();
@@ -517,50 +460,5 @@ public class QuestionActivityTests {
         });
     }
 
-
-//    @Test
-//    public void test10ResumeActivityWithNextQuestion() {
-//
-//        CheatToQuestionState savedState = new CheatToQuestionState(true);
-//        AppMediator.getInstance().setCheatToQuestionState(savedState);
-//
-//        ActivityScenario<QuestionActivity> scenario =
-//            ActivityScenario.launch(QuestionActivity.class);
-//
-//        scenario.onActivity(activity -> {
-//            TextView resultTextView = activity.findViewById(R.id.resultText);
-//            TextView questionTextView = activity.findViewById(R.id.questionText);
-//            Button trueButton = activity.findViewById(R.id.trueButton);
-//            Button falseButton = activity.findViewById(R.id.falseButton);
-//            Button cheatButton = activity.findViewById(R.id.cheatButton);
-//            Button nextButton = activity.findViewById(R.id.nextButton);
-//
-//            /*
-//            // Return result Yes from CheatActivity
-//            Intent resultData = new Intent();
-//            resultData.putExtra(CheatActivity.EXTRA_CHEATED, true);
-//
-//            // Resume QuestionActivity calling onActivityResult
-//            activity.onActivityResult(QuestionActivity.CHEAT_REQUEST, RESULT_OK, resultData);
-//            */
-//
-//
-//            // Verify the second question is shown
-//            assertEquals(quizQuestions[1], questionTextView.getText().toString());
-//
-//            // Verify the empty result is shown
-//            assertEquals(
-//                activity.getString(R.string.empty_text),
-//                resultTextView.getText().toString()
-//            );
-//
-//            // Verify the Next button is disabled
-//            assertFalse(nextButton.isEnabled());
-//            assertTrue(trueButton.isEnabled());
-//            assertTrue(falseButton.isEnabled());
-//            assertTrue(cheatButton.isEnabled());
-//
-//        });
-//    }
 
 }

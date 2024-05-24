@@ -55,7 +55,7 @@ public class QuestionModel implements QuestionContract.Model {
 
   private int quizIndex = 0;
 
-  private String correctLabel, incorrectLabel;
+  private String correctResultText, incorrectResultText;
 
   public QuestionModel() {
     int size = 5;
@@ -209,20 +209,20 @@ public class QuestionModel implements QuestionContract.Model {
 
 
   @Override
-  public String getCorrectLabel() {
-    return correctLabel;
+  public String getCorrectResultText() {
+    return correctResultText;
   }
 
   @Override
-  public String getIncorrectLabel() {
-    return incorrectLabel;
+  public String getIncorrectResultText() {
+    return incorrectResultText;
   }
 
-  public void setCorrectLabel(String label) {
-    correctLabel = label;
+  public void setCorrectResultText(String label) {
+    correctResultText = label;
   }
 
-  public void setIncorrectLabel(String label) {
-    incorrectLabel = label;
+  public void setIncorrectResultText(String label) {
+    incorrectResultText = label;
   }
 }
