@@ -5,32 +5,37 @@ package es.ulpgc.eite.da.randomquiz.cheat;
  */
 public class CheatModel implements CheatContract.Model {
 
-  public static String TAG = "RandomQuiz.CheatModel";
+    public static String TAG = "RandomQuiz.CheatModel";
 
 
-  private String falseAnswerText, trueAnswerText;
+    private String falseAnswerText, trueAnswerText;
+    private String emptyAnswerText;
 
 
-  public CheatModel() {
+    public CheatModel(String emptyText) {
+        emptyAnswerText = emptyText;
+    }
 
-  }
+    @Override
+    public String getEmptyAnswerText() {
+        return emptyAnswerText;
+    }
 
-  public void setFalseAnswerText(String label) {
-    falseAnswerText = label;
-  }
+    @Override
+    public String getFalseAnswerText() {
+        return falseAnswerText;
+    }
 
-  public void setTrueAnswerText(String label) {
-    trueAnswerText = label;
-  }
+    public void setFalseAnswerText(String label) {
+        falseAnswerText = label;
+    }
 
-  @Override
-  public String getFalseAnswerText() {
-    return falseAnswerText;
-  }
+    @Override
+    public String getTrueAnswerText() {
+        return trueAnswerText;
+    }
 
-
-  @Override
-  public String getTrueAnswerText() {
-    return trueAnswerText;
-  }
+    public void setTrueAnswerText(String label) {
+        trueAnswerText = label;
+    }
 }

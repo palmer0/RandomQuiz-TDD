@@ -12,21 +12,23 @@ import es.ulpgc.eite.da.randomquiz.app.AppMediator;
 public class QuestionScreen {
 
 
-  public static void configure(QuestionContract.View view) {
+    public static void configure(QuestionContract.View view) {
 
-    WeakReference<FragmentActivity> context = new WeakReference<>((FragmentActivity) view);
+        WeakReference<FragmentActivity> context = new WeakReference<>((FragmentActivity) view);
 
-    AppMediator mediator = AppMediator.getInstance();
-    QuestionContract.Presenter presenter = new QuestionPresenter(mediator);
+        AppMediator mediator = AppMediator.getInstance();
+        QuestionContract.Presenter presenter = new QuestionPresenter(mediator);
 
-    QuestionModel model = new QuestionModel();
-    model.setCorrectResultText(context.get().getString(R.string.correct_text));
-    model.setIncorrectResultText(context.get().getString(R.string.incorrect_text));
+        //QuestionModel model = new QuestionModel();
+        QuestionModel model =
+            new QuestionModel(context.get().getString(R.string.empty_text));
+        model.setCorrectResultText(context.get().getString(R.string.correct_text));
+        model.setIncorrectResultText(context.get().getString(R.string.incorrect_text));
 
-    presenter.injectView(new WeakReference<>(view));
-    presenter.injectModel(model);
-    view.injectPresenter(presenter);
+        presenter.injectView(new WeakReference<>(view));
+        presenter.injectModel(model);
+        view.injectPresenter(presenter);
 
-  }
+    }
 
 }

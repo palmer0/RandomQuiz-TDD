@@ -1,14 +1,12 @@
 package es.ulpgc.eite.da.randomquiz.app;
 
-import java.util.Objects;
-
 public class CheatToQuestionState {
 
-  public boolean cheated;
+    public boolean cheated;
 
-  public CheatToQuestionState(Boolean cheated) {
-    this.cheated = cheated;
-  }
+    public CheatToQuestionState(Boolean cheated) {
+        this.cheated = cheated;
+    }
 
 //  @Override
 //  public boolean equals(Object obj) {

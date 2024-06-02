@@ -5,46 +5,64 @@ import java.lang.ref.WeakReference;
 
 public interface QuestionContract {
 
-  interface View {
-    void injectPresenter(Presenter presenter);
+    interface View {
+        void injectPresenter(Presenter presenter);
 
-    void displayQuestionData(QuestionViewModel viewModel);
-    void navigateToCheatScreen();
+        void displayQuestionData(QuestionViewModel viewModel);
 
-  }
+        void navigateToCheatScreen();
 
-  interface Presenter {
-    void injectView(WeakReference<View> view);
-    void injectModel(Model model);
+    }
 
-    void onResumeCalled();
-    void trueButtonClicked();
-    void falseButtonClicked();
-    void cheatButtonClicked();
-    void nextButtonClicked();
+    interface Presenter {
+        void injectView(WeakReference<View> view);
 
-    void onCreateCalled();
-    void onRecreateCalled();
-  }
+        void injectModel(Model model);
 
-  interface Model {
+        void onResumeCalled();
 
-    String getCorrectResultText();
-    String getIncorrectResultText();
+        void onPauseCalled();
 
-    void setQuizAnswers(boolean[] answers);
+        void onDestroyCalled();
 
-    void setQuizQuestions(String[] questions);
+        void trueButtonClicked();
 
-    String getCurrentQuestion();
-    boolean getCurrentAnswer();
-    boolean isLastQuestion();
-    void incrQuizIndex();
-    void setCurrentIndex(int index);
+        void falseButtonClicked();
 
+        void cheatButtonClicked();
 
-    String[] getQuizQuestions();
-    boolean[] getQuizAnswers();
-  }
+        void nextButtonClicked();
+
+        void onCreateCalled();
+
+        void onRecreateCalled();
+    }
+
+    interface Model {
+
+        String getCorrectResultText();
+
+        String getIncorrectResultText();
+
+        String getCurrentQuestion();
+
+        boolean getCurrentAnswer();
+
+        boolean isLastQuestion();
+
+        void incrQuizIndex();
+
+        void setCurrentIndex(int index);
+
+        String getEmptyResultText();
+
+        String[] getQuizQuestions();
+
+        void setQuizQuestions(String[] questions);
+
+        boolean[] getQuizAnswers();
+
+        void setQuizAnswers(boolean[] answers);
+    }
 
 }
