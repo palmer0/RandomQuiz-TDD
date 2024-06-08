@@ -1,6 +1,9 @@
 package es.ulpgc.eite.da.randomquiz.question;
 
-public class QuestionState extends QuestionViewModel {
+public class QuestionState  {
+
+    public boolean answerButtonClicked;
+    public boolean userAnswer;
 
     public String[] quizQuestions;
     public boolean[] quizAnswers;

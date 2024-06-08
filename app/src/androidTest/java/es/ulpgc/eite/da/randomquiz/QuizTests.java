@@ -347,7 +347,7 @@ public class QuizTests {
         // When pulsar boton Yes
         steps.pulsarBoton(R.id.yesButton);
         // Then mostrar respuesta "<answer>" a pregunta "<question>"
-        String answer = (quizAnswers[0])
+        String answer = (quizAnswers[quizIndex-1])
             ? activity.getString(R.string.true_text)
             : activity.getString(R.string.false_text);
         steps.mostrarRespuestaAPregunta(answer);
@@ -431,7 +431,7 @@ public class QuizTests {
         // And mostrar botones Yes y No desactivados
         steps.mostrarBotonesYesYNoDesactivados();
         // And mostrar respuesta "<answer>" a pregunta "<question1>"
-        String answer = (quizAnswers[0])
+        String answer = (quizAnswers[quizIndex-1])
             ? activity.getString(R.string.true_text)
             : activity.getString(R.string.false_text);
         steps.mostrarRespuestaAPregunta(answer);
