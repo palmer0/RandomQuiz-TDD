@@ -64,23 +64,6 @@ public class CheatPresenter implements CheatContract.Presenter {
         }
     }
 
-    private void updateAnswerData() {
-
-        // update the view model
-        if (state.answer) {
-            viewModel.answerText = model.getTrueAnswerText();
-
-        } else {
-            viewModel.answerText = model.getFalseAnswerText();
-        }
-
-        viewModel.yesButton = false;
-        viewModel.noButton = false;
-
-        // refresh the display with updated data
-        view.get().displayCheatData(viewModel);
-    }
-
     @Override
     public void onResumeCalled() {
         Log.e(TAG, "onResumeCalled");
@@ -106,6 +89,24 @@ public class CheatPresenter implements CheatContract.Presenter {
 
         // Reset current state
         //mediator.resetCheatState();
+    }
+
+
+    private void updateAnswerData() {
+
+        // update the view model
+        if (state.answer) {
+            viewModel.answerText = model.getTrueAnswerText();
+
+        } else {
+            viewModel.answerText = model.getFalseAnswerText();
+        }
+
+        viewModel.yesButton = false;
+        viewModel.noButton = false;
+
+        // refresh the display with updated data
+        view.get().displayCheatData(viewModel);
     }
 
 
