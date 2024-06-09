@@ -54,7 +54,7 @@ public class QuestionPresenter implements QuestionContract.Presenter {
 
         // restore the view model
         viewModel = new QuestionViewModel();
-        if(state.answerButtonClicked) {
+        if(state.answered) {
             updateQuestionData();
 
         }else{
@@ -187,7 +187,7 @@ public class QuestionPresenter implements QuestionContract.Presenter {
     private void selectedButtonClicked(boolean button) {
 
         // update the current state
-        state.answerButtonClicked = true;
+        state.answered = true;
         state.userAnswer = button;
 
         updateQuestionData();
