@@ -28,9 +28,9 @@ import es.ulpgc.eite.da.randomquiz.question.QuestionActivity;
 @LargeTest
 @FixMethodOrder(MethodSorters.NAME_ASCENDING)
 @SuppressWarnings("ALL")
-public class QuizTests {
+public class QuizAppTests {
 
-
+    /*
     private String[] quizQuestions = {
         "01) Christian Bale played Batman in 'The Dark Knight Rises'?", // 1
         "02) The Gremlins movie was released in 1986?",  // 2
@@ -76,13 +76,14 @@ public class QuizTests {
         false, // 19
         true // 20
     };
-
+    */
 
     @Rule
     public ActivityTestRule<QuestionActivity> testRule =
             new ActivityTestRule<>(QuestionActivity.class);
 
-    public QuizSteps steps = new QuizSteps();
+    //public QuizAppSteps steps = new QuizAppSteps();
+    public QuizAppSteps steps;
 
 
 
@@ -103,7 +104,7 @@ public class QuizTests {
         testRule.launchActivity(new Intent());
         activity = testRule.getActivity();
 
-
+        steps = new QuizAppSteps(activity);
     }
 
     @After
@@ -131,25 +132,25 @@ public class QuizTests {
         // Given iniciar pantalla Question
         steps.iniciarPantallaQuestion();
         // And mostrar pregunta "<question>"
-        steps.mostrarPregunta(quizQuestions[quizIndex-1]);
+        steps.mostrarPregunta(quizIndex-1);
         // And ocultar resultado
-        steps.ocultarResultadoMostrandoTexto(activity.getString(R.string.empty_text));
+        steps.ocultarResultado();
         // And mostrar botones True y False y Cheat activados
         steps.mostrarBotonesTrueYFalseYCheatActivados();
         // And mostrar boton Next desactivado
         steps.mostrarBotonNextDesactivado();
         // And pulsar boton "<button>"
-        steps.pulsarBoton(R.id.trueButton);
+        steps.pulsarBotonTrue();
         // And mostrar resultado "<result>" a respuesta "<answer>"
-        steps.mostrarResultadoARespuestaDistintoATexto(activity.getString(R.string.empty_text));
+        steps.mostrarResultadoARespuesta();
         // And mostrar botones True y False y Cheat desactivados
         steps.mostrarBotonesTrueYFalseYCheatDesactivados();
         // And mostrar boton Next activado
         steps.mostrarBotonNextActivado();
         // When girar pantalla
-        steps.girarPantalla(activity.getRequestedOrientation());
+        steps.girarPantalla();
         // Then mostrar resultado "<result>" a respuesta "<answer>"
-        steps.mostrarResultadoARespuestaDistintoATexto(activity.getString(R.string.empty_text));
+        steps.mostrarResultadoARespuesta();
         // And mostrar botones True y False y Cheat desactivados
         steps.mostrarBotonesTrueYFalseYCheatDesactivados();
         // And mostrar boton Next activado
@@ -173,29 +174,29 @@ public class QuizTests {
         // Given iniciar pantalla Question
         steps.iniciarPantallaQuestion();
         // And mostrar pregunta "<question>"
-        steps.mostrarPregunta(quizQuestions[quizIndex-1]);
+        steps.mostrarPregunta(quizIndex-1);
         // And ocultar resultado
-        steps.ocultarResultadoMostrandoTexto(activity.getString(R.string.empty_text));
+        steps.ocultarResultado();
         // And mostrar botones True y False y Cheat activados
         steps.mostrarBotonesTrueYFalseYCheatActivados();
         // And mostrar boton Next desactivado
         steps.mostrarBotonNextDesactivado();
         // And pulsar boton Cheat
-        steps.pulsarBoton(R.id.cheatButton);
+        steps.pulsarBotonCheat();
         // And iniciar pantalla Cheat
         steps.iniciarPantallaCheat();
         // And mostrar mensaje Warning
-        steps.mostrarMensajeWarning(activity.getString(R.string.confirmation_text));
+        steps.mostrarMensajeWarning();
         // And ocultar respuesta
-        steps.ocultarRespuestaMostrandoTexto(activity.getString(R.string.empty_text));
+        steps.ocultarRespuesta();
         // And mostrar botones Yes y No activados
         steps.mostrarBotonesYesYNoActivados();
         // When girar pantalla
-        steps.girarPantalla(activity.getRequestedOrientation());
+        steps.girarPantalla();
         // Then mostrar mensaje Warning
-        steps.mostrarMensajeWarning(activity.getString(R.string.confirmation_text));
+        steps.mostrarMensajeWarning();
         // And ocultar respuesta
-        steps.ocultarRespuestaMostrandoTexto(activity.getString(R.string.empty_text));
+        steps.ocultarRespuesta();
         // And mostrar botones Yes y No activados
         steps.mostrarBotonesYesYNoActivados();
         // And pulsar boton Back
@@ -246,33 +247,33 @@ public class QuizTests {
         // Given iniciar pantalla Question
         steps.iniciarPantallaQuestion();
         // And mostrar pregunta "<question>"
-        steps.mostrarPregunta(quizQuestions[quizIndex-1]);
+        steps.mostrarPregunta(quizIndex-1);
         // And ocultar resultado
-        steps.ocultarResultadoMostrandoTexto(activity.getString(R.string.empty_text));
+        steps.ocultarResultado();
         // And mostrar botones True y False y Cheat activados
         steps.mostrarBotonesTrueYFalseYCheatActivados();
         // And mostrar boton Next desactivado
         steps.mostrarBotonNextDesactivado();
         // And pulsar boton Cheat
-        steps.pulsarBoton(R.id.cheatButton);
+        steps.pulsarBotonCheat();
         // And iniciar pantalla Cheat
         steps.iniciarPantallaCheat();
         // And mostrar mensaje Warning
-        steps.mostrarMensajeWarning(activity.getString(R.string.confirmation_text));
+        steps.mostrarMensajeWarning();
         // And ocultar respuesta
-        steps.ocultarRespuestaMostrandoTexto(activity.getString(R.string.empty_text));
+        steps.ocultarRespuesta();
         // And mostrar botones Yes y No activados
         steps.mostrarBotonesYesYNoActivados();
         // When pulsar boton No
-        steps.pulsarBoton(R.id.noButton);
+        steps.pulsarBotonNo();
         // Then finalizar pantalla Cheat
         steps.finalizarPantallaCheat();
         // And resumir pantalla Question
         steps.resumirPantallaQuestion();
         // And mostrar pregunta "<question>"
-        steps.mostrarPregunta(quizQuestions[quizIndex-1]);
+        steps.mostrarPregunta(quizIndex-1);
         // And ocultar resultado
-        steps.ocultarResultadoMostrandoTexto(activity.getString(R.string.empty_text));
+        steps.ocultarResultado();
         // And mostrar botones True y False y Cheat activados
         steps.mostrarBotonesTrueYFalseYCheatActivados();
         // And mostrar boton Next desactivado
@@ -280,7 +281,7 @@ public class QuizTests {
 
 
         //    When girar pantalla
-        steps.girarPantalla(activity.getRequestedOrientation());
+        steps.girarPantalla();
         //    Then mostrar pregunta "<question>"
         //    And ocultar resultado
         //    And mostrar botones True y False y Cheat activados
@@ -327,37 +328,34 @@ public class QuizTests {
         // Given iniciar pantalla Question
         steps.iniciarPantallaQuestion();
         // And mostrar pregunta "<question>"
-        steps.mostrarPregunta(quizQuestions[quizIndex-1]);
+        steps.mostrarPregunta(quizIndex-1);
         // And ocultar resultado
-        steps.ocultarResultadoMostrandoTexto(activity.getString(R.string.empty_text));
+        steps.ocultarResultado();
         // And mostrar botones True y False y Cheat activados
         steps.mostrarBotonesTrueYFalseYCheatActivados();
         // And mostrar boton Next desactivado
         steps.mostrarBotonNextDesactivado();
         // And pulsar boton Cheat
-        steps.pulsarBoton(R.id.cheatButton);
+        steps.pulsarBotonCheat();
         // And iniciar pantalla Cheat
         steps.iniciarPantallaCheat();
         // And mostrar mensaje Warning
-        steps.mostrarMensajeWarning(activity.getString(R.string.confirmation_text));
+        steps.mostrarMensajeWarning();
         // And ocultar respuesta
-        steps.ocultarRespuestaMostrandoTexto(activity.getString(R.string.empty_text));
+        steps.ocultarRespuesta();
         // And mostrar botones Yes y No activados
         steps.mostrarBotonesYesYNoActivados();
         // When pulsar boton Yes
-        steps.pulsarBoton(R.id.yesButton);
+        steps.pulsarBotonYes();
         // Then mostrar respuesta "<answer>" a pregunta "<question>"
-        String answer = (quizAnswers[quizIndex-1])
-            ? activity.getString(R.string.true_text)
-            : activity.getString(R.string.false_text);
-        steps.mostrarRespuestaAPregunta(answer);
+        steps.mostrarRespuestaAPregunta(quizIndex-1);
         // And mostrar botones Yes y No desactivados
         steps.mostrarBotonesYesYNoDesactivados();
 
         // When girar pantalla
-        steps.girarPantalla(activity.getRequestedOrientation());
+        steps.girarPantalla();
         // Then mostrar respuesta "<answer>" a pregunta "<question>"
-        steps.mostrarRespuestaAPregunta(answer);
+        steps.mostrarRespuestaAPregunta(quizIndex-1);
         // And mostrar botones Yes y No desactivados
         steps.mostrarBotonesYesYNoDesactivados();
 
@@ -409,32 +407,29 @@ public class QuizTests {
         // Given iniciar pantalla Question
         steps.iniciarPantallaQuestion();
         // And mostrar pregunta "<question1>"
-        steps.mostrarPregunta(quizQuestions[quizIndex-1]);
+        steps.mostrarPregunta(quizIndex-1);
         // And ocultar resultado
-        steps.ocultarResultadoMostrandoTexto(activity.getString(R.string.empty_text));
+        steps.ocultarResultado();
         // And mostrar botones True y False y Cheat activados
         steps.mostrarBotonesTrueYFalseYCheatActivados();
         // And mostrar boton Next desactivado
         steps.mostrarBotonNextDesactivado();
         // And pulsar boton Cheat
-        steps.pulsarBoton(R.id.cheatButton);
+        steps.pulsarBotonCheat();
         // And iniciar pantalla Cheat
         steps.iniciarPantallaCheat();
         // And mostrar mensaje Warning
-        steps.mostrarMensajeWarning(activity.getString(R.string.confirmation_text));
+        steps.mostrarMensajeWarning();
         // And ocultar respuesta
-        steps.ocultarRespuestaMostrandoTexto(activity.getString(R.string.empty_text));
+        steps.ocultarRespuesta();
         // And mostrar botones Yes y No activados
         steps.mostrarBotonesYesYNoActivados();
         // And pulsar boton Yes
-        steps.pulsarBoton(R.id.yesButton);
+        steps.pulsarBotonYes();
         // And mostrar botones Yes y No desactivados
         steps.mostrarBotonesYesYNoDesactivados();
         // And mostrar respuesta "<answer>" a pregunta "<question1>"
-        String answer = (quizAnswers[quizIndex-1])
-            ? activity.getString(R.string.true_text)
-            : activity.getString(R.string.false_text);
-        steps.mostrarRespuestaAPregunta(answer);
+        steps.mostrarRespuestaAPregunta(quizIndex-1);
         // When pulsar boton Back
         steps.pulsarBotonBack();
         // Then finalizar pantalla Cheat
@@ -442,20 +437,20 @@ public class QuizTests {
         // And resumir pantalla Question
         steps.resumirPantallaQuestion();
         // And mostrar pregunta "<question2>"
-        steps.mostrarPregunta(quizQuestions[quizIndex]);
+        steps.mostrarPregunta(quizIndex);
         // And ocultar resultado
-        steps.ocultarResultadoMostrandoTexto(activity.getString(R.string.empty_text));
+        steps.ocultarResultado();
         // And mostrar botones True y False y Cheat activados
         steps.mostrarBotonesTrueYFalseYCheatActivados();
         // And mostrar boton Next desactivado
         steps.mostrarBotonNextDesactivado();
 
         // When girar pantalla
-        steps.girarPantalla(activity.getRequestedOrientation());
+        steps.girarPantalla();
         // And mostrar pregunta "<question2>"
-        steps.mostrarPregunta(quizQuestions[quizIndex]);
+        steps.mostrarPregunta(quizIndex);
         // And ocultar resultado
-        steps.ocultarResultadoMostrandoTexto(activity.getString(R.string.empty_text));
+        steps.ocultarResultado();
         // And mostrar botones True y False y Cheat activados
         steps.mostrarBotonesTrueYFalseYCheatActivados();
         // And mostrar boton Next desactivado
@@ -477,45 +472,45 @@ public class QuizTests {
         // Given iniciar pantalla Question
         steps.iniciarPantallaQuestion();
         // And mostrar pregunta "<question1>"
-        steps.mostrarPregunta(quizQuestions[quizIndex-1]);
+        steps.mostrarPregunta(quizIndex-1);
         // And ocultar resultado
-        steps.ocultarResultadoMostrandoTexto(activity.getString(R.string.empty_text));
+        steps.ocultarResultado();
         // And mostrar botones True y False y Cheat activados
         steps.mostrarBotonesTrueYFalseYCheatActivados();
         // And mostrar boton Next desactivado
         steps.mostrarBotonNextDesactivado();
         // And pulsar boton "<button>"
-        steps.pulsarBoton(R.id.trueButton);
+        steps.pulsarBotonTrue();
         // And mostrar resultado "<result>" a respuesta "<answer>"
-        steps.mostrarResultadoARespuestaDistintoATexto(activity.getString(R.string.empty_text));
+        steps.mostrarResultadoARespuesta();
         // And mostrar botones True y False y Cheat desactivados
         steps.mostrarBotonesTrueYFalseYCheatDesactivados();
         // And mostrar boton Next activado
         steps.mostrarBotonNextActivado();
         // And girar pantalla
-        steps.girarPantalla(activity.getRequestedOrientation());
+        steps.girarPantalla();
         // And mostrar resultado "<result>" a respuesta "<answer>"
-        steps.mostrarResultadoARespuestaDistintoATexto(activity.getString(R.string.empty_text));
+        steps.mostrarResultadoARespuesta();
         // And mostrar botones True y False y Cheat desactivados
         steps.mostrarBotonesTrueYFalseYCheatDesactivados();
         // And mostrar boton Next activado
         steps.mostrarBotonNextActivado();
         // And pulsar boton Next
-        steps.pulsarBoton(R.id.nextButton);
+        steps.pulsarBotonNext();
         // And mostrar pregunta "<question2>"
-        steps.mostrarPregunta(quizQuestions[quizIndex]);
+        steps.mostrarPregunta(quizIndex);
         // And ocultar resultado
-        steps.ocultarResultadoMostrandoTexto(activity.getString(R.string.empty_text));
+        steps.ocultarResultado();
         // And mostrar botones True y False y Cheat activados
         steps.mostrarBotonesTrueYFalseYCheatActivados();
         // And mostrar boton Next desactivado
         steps.mostrarBotonNextDesactivado();
         // When girar pantalla
-        steps.girarPantalla(activity.getRequestedOrientation());
+        steps.girarPantalla();
         // Then mostrar pregunta "<question2>"
-        steps.mostrarPregunta(quizQuestions[quizIndex]);
+        steps.mostrarPregunta(quizIndex);
         // And ocultar resultado
-        steps.ocultarResultadoMostrandoTexto(activity.getString(R.string.empty_text));
+        steps.ocultarResultado();
         // And mostrar botones True y False y Cheat activados
         steps.mostrarBotonesTrueYFalseYCheatActivados();
         // And mostrar boton Next desactivado
