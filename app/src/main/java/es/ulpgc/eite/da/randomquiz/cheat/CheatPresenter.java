@@ -16,7 +16,7 @@ public class CheatPresenter implements CheatContract.Presenter {
     private WeakReference<CheatContract.View> view;
     private CheatContract.Model model;
     private CheatState state;
-    private CheatViewModel viewModel;
+    //private CheatViewModel viewModel;
     private AppMediator mediator;
 
     public CheatPresenter(AppMediator mediator) {
@@ -30,7 +30,7 @@ public class CheatPresenter implements CheatContract.Presenter {
 
         // init the screen state
         state = new CheatState();
-        //state.answerText= model.getEmptyAnswerText();
+        state.answerText= model.getEmptyAnswerText();
         //mediator.setCheatState(state);
 
         // get the saved state from previous screen
@@ -41,9 +41,11 @@ public class CheatPresenter implements CheatContract.Presenter {
             state.answer = savedState.answer;
         }
 
+        /*
         // init the view model
         viewModel = new CheatViewModel();
         viewModel.answerText = model.getEmptyAnswerText();
+        */
     }
 
     @Override
@@ -53,6 +55,7 @@ public class CheatPresenter implements CheatContract.Presenter {
         // restore the screen state
         state = mediator.getCheatState();
 
+        /*
         // restore the view model
         viewModel = new CheatViewModel();
         if(state.cheated) {
@@ -62,16 +65,17 @@ public class CheatPresenter implements CheatContract.Presenter {
 
             viewModel.answerText = model.getEmptyAnswerText();
         }
+        */
     }
 
     @Override
     public void onResumeCalled() {
         Log.e(TAG, "onResumeCalled");
 
-        //view.get().displayCheatData(state);
+        view.get().displayCheatData(state);
 
         // refresh the display with updated data
-        view.get().displayCheatData(viewModel);
+        //view.get().displayCheatData(viewModel);
     }
 
 
@@ -92,6 +96,7 @@ public class CheatPresenter implements CheatContract.Presenter {
     }
 
 
+    /*
     private void updateAnswerData() {
 
         // update the view model
@@ -108,7 +113,7 @@ public class CheatPresenter implements CheatContract.Presenter {
         // refresh the display with updated data
         view.get().displayCheatData(viewModel);
     }
-
+    */
 
     @Override
     public void yesButtonClicked() {
@@ -117,12 +122,29 @@ public class CheatPresenter implements CheatContract.Presenter {
         // save the state to previous screen
         saveStateToPreviousScreen(true);
 
+        // update the view model
+        if (state.answer) {
+            state.answerText = model.getTrueAnswerText();
+
+        } else {
+            state.answerText = model.getFalseAnswerText();
+        }
+
+        state.yesButton = false;
+        state.noButton = false;
+
+        // refresh the display with updated data
+        view.get().displayCheatData(state);
+
+        /*
         // update the current state
         state.cheated = true;
 
         updateAnswerData();
+        */
 
     }
+
 
     /*
     @Override
@@ -149,6 +171,7 @@ public class CheatPresenter implements CheatContract.Presenter {
         }
     }
     */
+
 
     @Override
     public void noButtonClicked() {
