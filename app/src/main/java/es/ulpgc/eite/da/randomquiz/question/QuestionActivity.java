@@ -47,12 +47,6 @@ public class QuestionActivity
         cheatButton.setText(getCheatButtonLabel());
         nextButton.setText(getNextButtonLabel());
 
-    /*
-    if(savedInstanceState == null) {
-      AppMediator.resetInstance();
-    }
-    */
-
         // do the setup
         QuestionScreen.configure(this);
 

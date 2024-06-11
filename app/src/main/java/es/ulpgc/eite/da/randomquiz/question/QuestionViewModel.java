@@ -3,7 +3,6 @@ package es.ulpgc.eite.da.randomquiz.question;
 public class QuestionViewModel {
 
     public String questionText;
-    //public String resultText = "";
     public String resultText;
 
     public boolean falseButton = true;

@@ -58,8 +58,7 @@ public class QuestionModel implements QuestionContract.Model {
     private String correctResultText, incorrectResultText;
     private String emptyResultText;
 
-    public QuestionModel(String emptyText) {
-        emptyResultText = emptyText;
+    public QuestionModel() {
 
         int size = 5;
         //generateQuizQuestions(size);
@@ -81,6 +80,11 @@ public class QuestionModel implements QuestionContract.Model {
     generateQuizAnswers(index, size);
   }
   */
+
+    @Override
+    public void setEmptyResultText(String text) {
+        this.emptyResultText = text;
+    }
 
     @Override
     public String getEmptyResultText() {
@@ -111,47 +115,47 @@ public class QuestionModel implements QuestionContract.Model {
 
     }
 
-  /*
-  private void generateQuizQuestions(int size) {
-    quizQuestions = new String[size];
-    int[] indexArray = generateIndexArray(size);
+    /*
+    private void generateQuizQuestions(int size) {
+        quizQuestions = new String[size];
+        int[] indexArray = generateIndexArray(size);
 
-    for (int i = 0; i < size; i++) {
-      int index = indexArray[i];
-      quizQuestions[i] = questionArray[index];
-    }
-
-  }
-
-  private void generateQuizAnswers(int size) {
-    quizAnswers = new boolean[size];
-    int[] indexArray = generateIndexArray(size);
-
-    for (int i = 0; i < size; i++) {
-      int index = indexArray[i];
-      quizAnswers[i] = answerArray[index];
-    }
-
-  }
-
-  // Valor entre M y N, ambos incluidos: Math.floor(Math.random()*(N-M+1)+M);
-  private int[] generateIndexArray(int size) {
-    int[] indexArray = new int[size];
-
-    for (int i = 0; i < size; i++) {
-      indexArray[i] = (int)(Math.random()*20); // generates numbers from [0,19]
-
-      for (int j = 0; j < i; j++) {
-        if (indexArray[i] == indexArray[j]) {
-          i--; // if a[i] is a duplicate of a[j], then run outer loop on i again
-          break;
+        for (int i = 0; i < size; i++) {
+            int index = indexArray[i];
+            quizQuestions[i] = questionArray[index];
         }
-      }
+
     }
 
-    return indexArray;
-  }
-  */
+    private void generateQuizAnswers(int size) {
+        quizAnswers = new boolean[size];
+        int[] indexArray = generateIndexArray(size);
+
+        for (int i = 0; i < size; i++) {
+            int index = indexArray[i];
+            quizAnswers[i] = answerArray[index];
+        }
+
+    }
+
+    // Valor entre M y N, ambos incluidos: Math.floor(Math.random()*(N-M+1)+M);
+    private int[] generateIndexArray(int size) {
+        int[] indexArray = new int[size];
+
+        for (int i = 0; i < size; i++) {
+            indexArray[i] = (int) (Math.random() * 20); // generates numbers from [0,19]
+
+            for (int j = 0; j < i; j++) {
+                if (indexArray[i] == indexArray[j]) {
+                    i--; // if a[i] is a duplicate of a[j], then run outer loop on i again
+                    break;
+                }
+            }
+        }
+
+        return indexArray;
+    }
+    */
 
     @Override
     public String[] getQuizQuestions() {
@@ -192,28 +196,6 @@ public class QuestionModel implements QuestionContract.Model {
     public void setCurrentIndex(int index) {
         quizIndex = index;
     }
-
-  /*
-  @Override
-  public String getCurrentQuestion(int quizIndex) {
-    return quizQuestions[quizIndex];
-  }
-
-  @Override
-  public boolean getCurrentAnswer(int quizIndex) {
-    return quizAnswers[quizIndex];
-  }
-
-  @Override
-  public boolean isLastQuestion(int quizIndex) {
-    if(quizIndex == quizQuestions.length-1){
-      return true;
-    }
-
-    return false;
-
-  }
-  */
 
 
     @Override

@@ -54,6 +54,8 @@ public interface QuestionContract {
 
         void setCurrentIndex(int index);
 
+        void setEmptyResultText(String text);
+
         String getEmptyResultText();
 
         String[] getQuizQuestions();

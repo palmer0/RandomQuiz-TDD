@@ -16,7 +16,6 @@ public class CheatPresenter implements CheatContract.Presenter {
     private WeakReference<CheatContract.View> view;
     private CheatContract.Model model;
     private CheatState state;
-    //private CheatViewModel viewModel;
     private AppMediator mediator;
 
     public CheatPresenter(AppMediator mediator) {
@@ -31,7 +30,6 @@ public class CheatPresenter implements CheatContract.Presenter {
         // init the screen state
         state = new CheatState();
         state.answerText= model.getEmptyAnswerText();
-        //mediator.setCheatState(state);
 
         // get the saved state from previous screen
         QuestionToCheatState savedState = mediator.getQuestionToCheatState();
@@ -41,11 +39,6 @@ public class CheatPresenter implements CheatContract.Presenter {
             state.answer = savedState.answer;
         }
 
-        /*
-        // init the view model
-        viewModel = new CheatViewModel();
-        viewModel.answerText = model.getEmptyAnswerText();
-        */
     }
 
     @Override
@@ -55,27 +48,14 @@ public class CheatPresenter implements CheatContract.Presenter {
         // restore the screen state
         state = mediator.getCheatState();
 
-        /*
-        // restore the view model
-        viewModel = new CheatViewModel();
-        if(state.cheated) {
-            updateAnswerData();
-
-        }else{
-
-            viewModel.answerText = model.getEmptyAnswerText();
-        }
-        */
     }
 
     @Override
     public void onResumeCalled() {
         Log.e(TAG, "onResumeCalled");
 
+        // update the display with updated data
         view.get().displayCheatData(state);
-
-        // refresh the display with updated data
-        //view.get().displayCheatData(viewModel);
     }
 
 
@@ -83,6 +63,7 @@ public class CheatPresenter implements CheatContract.Presenter {
     public void onPauseCalled() {
         Log.e(TAG, "onPauseCalled");
 
+        // save the screen state
         mediator.setCheatState(state);
     }
 
@@ -91,29 +72,10 @@ public class CheatPresenter implements CheatContract.Presenter {
     public void onDestroyCalled() {
         Log.e(TAG, "onDestroyCalled()");
 
-        // Reset current state
+        // reset current state
         //mediator.resetCheatState();
     }
 
-
-    /*
-    private void updateAnswerData() {
-
-        // update the view model
-        if (state.answer) {
-            viewModel.answerText = model.getTrueAnswerText();
-
-        } else {
-            viewModel.answerText = model.getFalseAnswerText();
-        }
-
-        viewModel.yesButton = false;
-        viewModel.noButton = false;
-
-        // refresh the display with updated data
-        view.get().displayCheatData(viewModel);
-    }
-    */
 
     @Override
     public void yesButtonClicked() {
@@ -122,7 +84,7 @@ public class CheatPresenter implements CheatContract.Presenter {
         // save the state to previous screen
         saveStateToPreviousScreen(true);
 
-        // update the view model
+        // update the state
         if (state.answer) {
             state.answerText = model.getTrueAnswerText();
 
@@ -135,52 +97,17 @@ public class CheatPresenter implements CheatContract.Presenter {
 
         // refresh the display with updated data
         view.get().displayCheatData(state);
-
-        /*
-        // update the current state
-        state.cheated = true;
-
-        updateAnswerData();
-        */
-
     }
-
-
-    /*
-    @Override
-    public void yesButtonClicked() {
-        Log.e(TAG, "yesButtonClicked");
-
-        // set passed state
-        QuestionToCheatState savedState = mediator.getQuestionToCheatState();
-        if (savedState != null) {
-
-            CheatToQuestionState newState = new CheatToQuestionState(true);
-            mediator.setCheatToQuestionState(newState);
-
-            if (savedState.answer) {
-                state.answerText = model.getTrueAnswerText();
-            } else {
-                state.answerText = model.getFalseAnswerText();
-            }
-
-            state.yesButton = false;
-            state.noButton = false;
-
-            view.get().displayCheatData(state);
-        }
-    }
-    */
 
 
     @Override
     public void noButtonClicked() {
         Log.e(TAG, "noButtonClicked");
 
-        //CheatToQuestionState newState = new CheatToQuestionState(false);
-        //mediator.setCheatToQuestionState(newState);
-
+        // save the state to previous screen
         saveStateToPreviousScreen(false);
+
+        // fihish the screen
         view.get().finishView();
     }
 

@@ -35,6 +35,8 @@ public interface CheatContract {
 
     interface Model {
 
+        void setEmptyAnswerText(String text);
+
         String getEmptyAnswerText();
 
         String getFalseAnswerText();

@@ -14,7 +14,6 @@ public class QuestionPresenter implements QuestionContract.Presenter {
 
     private WeakReference<QuestionContract.View> view;
     private QuestionState state;
-    //private QuestionViewModel viewModel;
     private QuestionContract.Model model;
     private AppMediator mediator;
 
@@ -30,17 +29,11 @@ public class QuestionPresenter implements QuestionContract.Presenter {
         // init the state
         state = new QuestionState();
         state.resultText=model.getEmptyResultText();
-        //mediator.setQuestionState(state);
 
         // update the state from model
         state.quizQuestions = model.getQuizQuestions();
         state.quizAnswers = model.getQuizAnswers();
 
-        /*
-        // init the view model
-        viewModel = new QuestionViewModel();
-        viewModel.resultText = model.getEmptyResultText();
-        */
     }
 
     @Override
@@ -54,17 +47,6 @@ public class QuestionPresenter implements QuestionContract.Presenter {
         model.setQuizQuestions(state.quizQuestions);
         model.setQuizAnswers(state.quizAnswers);
 
-        /*
-        // restore the view model
-        viewModel = new QuestionViewModel();
-        if(state.answered) {
-            updateQuestionData();
-
-        }else{
-
-            viewModel.resultText = model.getEmptyResultText();
-        }
-        */
     }
 
 
@@ -86,17 +68,8 @@ public class QuestionPresenter implements QuestionContract.Presenter {
         model.setCurrentIndex(state.quizIndex);
 
         state.questionText = model.getCurrentQuestion();
-        //state.questionText = model.getCurrentQuestion(state.quizIndex);
 
         view.get().displayQuestionData(state);
-
-        /*
-        // update the view model
-        viewModel.questionText = model.getCurrentQuestion();
-
-        // refresh display with updated data
-        view.get().displayQuestionData(viewModel);
-        */
 
     }
 
@@ -117,7 +90,6 @@ public class QuestionPresenter implements QuestionContract.Presenter {
     private void updateQuestionData(boolean userAnswer) {
 
         boolean currentAnswer = model.getCurrentAnswer();
-        //boolean currentAnswer = model.getCurrentAnswer(state.quizIndex);
 
         if (currentAnswer == userAnswer) {
             state.resultText = model.getCorrectResultText();
@@ -135,51 +107,14 @@ public class QuestionPresenter implements QuestionContract.Presenter {
             state.nextButton = true;
         }
 
-        /*
-        if(model.isLastQuestion(state.quizIndex)) {
-          state.nextButton = false;
-        } else {
-          state.nextButton = true;
-        }
-        */
-
         view.get().displayQuestionData(state);
     }
-
-    /*
-    private void updateQuestionData() {
-
-        boolean currentAnswer = model.getCurrentAnswer();
-        //boolean currentAnswer = model.getCurrentAnswer(state.quizIndex);
-
-        if (currentAnswer == state.userAnswer) {
-            viewModel.resultText = model.getCorrectResultText();
-        } else {
-            viewModel.resultText = model.getIncorrectResultText();
-        }
-
-        viewModel.falseButton = false;
-        viewModel.trueButton = false;
-        viewModel.cheatButton = false;
-
-        if (model.isLastQuestion()) {
-            viewModel.nextButton = false;
-        } else {
-            viewModel.nextButton = true;
-        }
-
-        // refresh display with updated data
-        view.get().displayQuestionData(viewModel);
-    }
-    */
-
 
     @Override
     public void trueButtonClicked() {
         Log.e(TAG, "trueButtonClicked");
 
         updateQuestionData(true);
-        //selectedButtonClicked(true);
     }
 
     @Override
@@ -187,19 +122,8 @@ public class QuestionPresenter implements QuestionContract.Presenter {
         Log.e(TAG, "falseButtonClicked");
 
         updateQuestionData(false);
-        //selectedButtonClicked(false);
     }
 
-    /*
-    private void selectedButtonClicked(boolean button) {
-
-        // update the current state
-        state.answered = true;
-        state.userAnswer = button;
-
-        updateQuestionData();
-    }
-    */
 
     @Override
     public void cheatButtonClicked() {
@@ -220,22 +144,7 @@ public class QuestionPresenter implements QuestionContract.Presenter {
         state.quizIndex++;
         model.incrQuizIndex();
 
-        /*
-        viewModel.questionText = model.getCurrentQuestion();
-        viewModel.resultText = model.getEmptyResultText();
-
-        viewModel.falseButton = true;
-        viewModel.trueButton = true;
-        viewModel.cheatButton = true;
-        viewModel.nextButton = false;
-
-        view.get().displayQuestionData(viewModel);
-        */
-
-
         state.questionText = model.getCurrentQuestion();
-        //state.questionText = model.getCurrentQuestion(state.quizIndex);
-        //state.resultText = "";
         state.resultText = model.getEmptyResultText();
 
         state.falseButton = true;

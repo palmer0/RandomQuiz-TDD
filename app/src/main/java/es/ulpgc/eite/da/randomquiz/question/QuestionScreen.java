@@ -19,9 +19,8 @@ public class QuestionScreen {
         AppMediator mediator = AppMediator.getInstance();
         QuestionContract.Presenter presenter = new QuestionPresenter(mediator);
 
-        //QuestionModel model = new QuestionModel();
-        QuestionModel model =
-            new QuestionModel(context.get().getString(R.string.empty_text));
+        QuestionModel model = new QuestionModel();
+        model.setEmptyResultText(context.get().getString(R.string.empty_text));
         model.setCorrectResultText(context.get().getString(R.string.correct_text));
         model.setIncorrectResultText(context.get().getString(R.string.incorrect_text));
 
