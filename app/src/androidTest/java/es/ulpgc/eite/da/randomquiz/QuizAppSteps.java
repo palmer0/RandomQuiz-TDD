@@ -20,8 +20,6 @@ import androidx.test.uiautomator.UiDevice;
 public class QuizAppSteps {
 
 
-
-
   private String[] quizQuestions = {
       "01) Christian Bale played Batman in 'The Dark Knight Rises'?", // 1
       "02) The Gremlins movie was released in 1986?",  // 2
@@ -93,18 +91,6 @@ public class QuizAppSteps {
     onView(withId(R.id.questionText)).check(matches(withText(question)));
   }
 
-  /*
-  public void mostrarPregunta(String question) {
-    onView(withId(R.id.questionText)).check(matches(isCompletelyDisplayed()));
-    onView(withId(R.id.questionText)).check(matches(withText(question)));
-  }
-  */
-
-  /*
-  public void ocultarResultadoMostrandoTexto(String text) {
-    onView(withId(R.id.resultText)).check(matches(withText(text)));
-  }
-  */
 
   public void ocultarResultado() {
     String text = activity.getString(R.string.empty_text);
@@ -116,11 +102,6 @@ public class QuizAppSteps {
     onView(withId(R.id.answerText)).check(matches(withText(text)));
   }
 
-  /*
-  public void ocultarRespuestaMostrandoTexto(String text) {
-    onView(withId(R.id.answerText)).check(matches(withText(text)));
-  }
-  */
 
   public void mostrarBotonesTrueYFalseYCheatActivados() {
     onView(withId(R.id.trueButton)).check(matches(isEnabled()));
@@ -131,21 +112,6 @@ public class QuizAppSteps {
   public void mostrarBotonNextDesactivado() {
     onView(withId(R.id.nextButton)).check(matches(not(isEnabled())));
   }
-
-
-  /*
-  public void pulsarBoton(int button) {
-
-    onView(withId(button)).check(matches(isCompletelyDisplayed()));
-    onView(withId(button)).perform(click());
-
-    try {
-      Thread.sleep(DELAY_IN_SECS);
-    } catch (InterruptedException e) {
-    }
-  }
-  */
-
 
   public void pulsarBotonCheat() {
 
@@ -212,13 +178,6 @@ public class QuizAppSteps {
     onView(withId(R.id.resultText)).check(matches(not(withText(text))));
   }
 
-  /*
-  public void mostrarResultadoARespuestaDistintoATexto(String text) {
-    onView(withId(R.id.resultText)).check(matches(isCompletelyDisplayed()));
-    onView(withId(R.id.resultText)).check(matches(not(withText(text))));
-  }
-  */
-
   public void mostrarBotonesTrueYFalseYCheatDesactivados() {
     onView(withId(R.id.trueButton)).check(matches(not(isEnabled())));
     onView(withId(R.id.falseButton)).check(matches(not(isEnabled())));
@@ -232,7 +191,6 @@ public class QuizAppSteps {
 
 
   public void iniciarPantallaCheat() {
-    //getInstrumentation().waitForIdleSync();
 
     try {
       Thread.sleep(DELAY_IN_SECS);
@@ -246,12 +204,6 @@ public class QuizAppSteps {
     onView(withId(R.id.confirmationText)).check(matches(withText(text)));
   }
 
-  /*
-  public void mostrarMensajeWarning(String w) {
-    onView(withId(R.id.confirmationText)).check(matches(isCompletelyDisplayed()));
-    onView(withId(R.id.confirmationText)).check(matches(withText(w)));
-  }
-  */
 
   public void mostrarBotonesYesYNoActivados() {
     onView(withId(R.id.yesButton)).check(matches(isEnabled()));
@@ -283,14 +235,6 @@ public class QuizAppSteps {
     onView(withId(R.id.answerText)).check(matches(withText(answer)));
   }
 
-  /*
-  public void mostrarRespuestaAPregunta(String answer) {
-
-    onView(withId(R.id.answerText)).check(matches(isCompletelyDisplayed()));
-    onView(withId(R.id.answerText)).check(matches(withText(answer)));
-  }
-  */
-
   public void mostrarBotonesYesYNoDesactivados() {
     onView(withId(R.id.yesButton)).check(matches(not(isEnabled())));
     onView(withId(R.id.noButton)).check(matches(not(isEnabled())));
@@ -303,7 +247,6 @@ public class QuizAppSteps {
     } catch (InterruptedException e) {
     }
 
-    //getInstrumentation().waitForIdleSync();
     pressBack();
   }
 
