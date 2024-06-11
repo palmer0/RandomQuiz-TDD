@@ -31,8 +31,8 @@ public class QuestionActivity
         //Log.e(TAG, "onCreate");
 
         linkLayoutViews();
-        setupButtonLabels();
-        setupButtonListeners();
+        initButtonLabels();
+        initButtonListeners();
 
         // do the setup
         QuestionScreen.configure(this);
@@ -55,14 +55,14 @@ public class QuestionActivity
         resultText = findViewById(R.id.resultText);
     }
 
-    private void setupButtonListeners() {
+    private void initButtonListeners() {
         trueButton.setOnClickListener(v -> presenter.trueButtonClicked());
         falseButton.setOnClickListener(v -> presenter.falseButtonClicked());
         cheatButton.setOnClickListener(v -> presenter.cheatButtonClicked());
         nextButton.setOnClickListener(v -> presenter.nextButtonClicked());
     }
     
-    private void setupButtonLabels() {
+    private void initButtonLabels() {
 
         trueButton.setText(getTrueButtonLabel());
         falseButton.setText(getFalseButtonLabel());

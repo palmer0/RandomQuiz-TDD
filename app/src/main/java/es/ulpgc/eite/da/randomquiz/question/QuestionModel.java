@@ -69,18 +69,6 @@ public class QuestionModel implements QuestionContract.Model {
         generateQuizAnswers(index, size);
     }
 
-  /*
-  public QuestionModel() {
-    int size = 5;
-    //generateQuizQuestions(size);
-    //generateQuizAnswers( size);
-
-    int index = generateQuizIndex(size);
-    generateQuizQuestions(index, size);
-    generateQuizAnswers(index, size);
-  }
-  */
-
     @Override
     public void setEmptyResultText(String text) {
         this.emptyResultText = text;
