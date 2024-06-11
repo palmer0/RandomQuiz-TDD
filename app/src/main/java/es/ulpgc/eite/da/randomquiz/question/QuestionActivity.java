@@ -31,8 +31,8 @@ public class QuestionActivity
         //Log.e(TAG, "onCreate");
 
         linkLayoutViews();
-        setupButtonListeners();
         setupButtonLabels();
+        setupButtonListeners();
 
         // do the setup
         QuestionScreen.configure(this);
