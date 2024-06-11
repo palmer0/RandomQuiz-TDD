@@ -30,22 +30,9 @@ public class QuestionActivity
 
         //Log.e(TAG, "onCreate");
 
-        trueButton = findViewById(R.id.trueButton);
-        falseButton = findViewById(R.id.falseButton);
-        cheatButton = findViewById(R.id.cheatButton);
-        nextButton = findViewById(R.id.nextButton);
-        questionText = findViewById(R.id.questionText);
-        resultText = findViewById(R.id.resultText);
-
-        trueButton.setOnClickListener(v -> presenter.trueButtonClicked());
-        falseButton.setOnClickListener(v -> presenter.falseButtonClicked());
-        cheatButton.setOnClickListener(v -> presenter.cheatButtonClicked());
-        nextButton.setOnClickListener(v -> presenter.nextButtonClicked());
-
-        trueButton.setText(getTrueButtonLabel());
-        falseButton.setText(getFalseButtonLabel());
-        cheatButton.setText(getCheatButtonLabel());
-        nextButton.setText(getNextButtonLabel());
+        linkLayoutViews();
+        setupButtonListeners();
+        setupButtonLabels();
 
         // do the setup
         QuestionScreen.configure(this);
@@ -57,7 +44,31 @@ public class QuestionActivity
             presenter.onRecreateCalled();
         }
     }
+    
+    private void linkLayoutViews() {
 
+        trueButton = findViewById(R.id.trueButton);
+        falseButton = findViewById(R.id.falseButton);
+        cheatButton = findViewById(R.id.cheatButton);
+        nextButton = findViewById(R.id.nextButton);
+        questionText = findViewById(R.id.questionText);
+        resultText = findViewById(R.id.resultText);
+    }
+
+    private void setupButtonListeners() {
+        trueButton.setOnClickListener(v -> presenter.trueButtonClicked());
+        falseButton.setOnClickListener(v -> presenter.falseButtonClicked());
+        cheatButton.setOnClickListener(v -> presenter.cheatButtonClicked());
+        nextButton.setOnClickListener(v -> presenter.nextButtonClicked());
+    }
+    
+    private void setupButtonLabels() {
+
+        trueButton.setText(getTrueButtonLabel());
+        falseButton.setText(getFalseButtonLabel());
+        cheatButton.setText(getCheatButtonLabel());
+        nextButton.setText(getNextButtonLabel()); 
+    }
 
     @Override
     protected void onResume() {
