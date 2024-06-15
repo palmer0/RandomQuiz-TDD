@@ -33,6 +33,7 @@ public class QuestionPresenter implements QuestionContract.Presenter {
         // update the state from model
         state.quizQuestions = model.getQuizQuestions();
         state.quizAnswers = model.getQuizAnswers();
+        state.questionText = model.getCurrentQuestion();
 
     }
 
@@ -46,6 +47,7 @@ public class QuestionPresenter implements QuestionContract.Presenter {
         // update the model from state
         model.setQuizQuestions(state.quizQuestions);
         model.setQuizAnswers(state.quizAnswers);
+        model.setCurrentIndex(state.quizIndex);
 
     }
 
@@ -64,11 +66,7 @@ public class QuestionPresenter implements QuestionContract.Presenter {
             }
         }
 
-        // call the model
-        model.setCurrentIndex(state.quizIndex);
-
-        state.questionText = model.getCurrentQuestion();
-
+        //refresh the view with updated data
         view.get().displayQuestionData(state);
 
     }

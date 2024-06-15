@@ -227,7 +227,7 @@ public class QuizAppSteps {
 
   public void mostrarRespuestaAPregunta(int quizIndex) {
 
-    String answer = (quizAnswers[quizIndex-1])
+    String answer = (quizAnswers[quizIndex])
         ? activity.getString(R.string.true_text)
         : activity.getString(R.string.false_text);
 
