@@ -1,15 +1,15 @@
 [versions]
 agp = "8.4.0"
 junit = "4.13.2"
-junitVersion = "1.1.5"
-espressoCore = "3.5.1"
-appcompat = "1.6.1"
+junitVersion = "1.2.1"
+espressoCore = "3.6.1"
+appcompat = "1.7.0"
 material = "1.12.0"
-activity = "1.9.0"
-constraintlayout = "2.1.4"
-robolectric = "4.8.1"
-rules = "1.5.0"
-runner = "1.5.2"
+activity = "1.10.0"
+constraintlayout = "2.2.0"
+robolectric = "4.14.1"
+rules = "1.6.1"
+runner = "1.6.2"
 uiautomator = "2.3.0"
 
 [libraries]
